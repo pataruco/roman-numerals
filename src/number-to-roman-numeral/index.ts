@@ -15,15 +15,14 @@ const numberToRomanNumeral = (number: number) => {
     I: 1,
   };
 
-  return Object.keys(numberNumeralMap).reduce(
-    (numeral: string, numeralKey: string) => {
-      const q = Math.floor(number / numberNumeralMap[numeralKey]);
-      number -= q * numberNumeralMap[numeralKey];
-      numeral += numeralKey.repeat(q);
-      return numeral;
-    },
-    '',
-  );
+  const numeralKeys = Object.keys(numberNumeralMap);
+
+  return numeralKeys.reduce((numeral: string, numeralKey: string) => {
+    const positionNumber = Math.floor(number / numberNumeralMap[numeralKey]);
+    number = number - positionNumber * numberNumeralMap[numeralKey];
+    numeral = numeral + numeralKey.repeat(positionNumber);
+    return numeral;
+  }, '');
 };
 
 export default numberToRomanNumeral;
