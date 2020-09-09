@@ -1,4 +1,4 @@
-const numberToRomanNumeral = (number: number) => {
+const numberToRomanNumeral = (number: number): string => {
   const numberNumeralMap: { [key: string]: number } = {
     M: 1000,
     CM: 900,
